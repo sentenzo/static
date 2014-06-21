@@ -1,0 +1,118 @@
+
+
+@color: #111;
+
+body, html, p, div, span, header, footer, ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+	//background: radial-gradient(circle at center, #000 0%,#111 20%, #111 100%);
+    //background: #999 url(../img/Krugi_na_vode.gif) center no-repeat;
+    background-color: #222;
+}
+
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+}
+
+div#gg { 
+    transition: box-shadow 0.5s  ease 0.1s; 
+    &:hover {
+        box-shadow: 0 0 10px black;
+        >div {
+            box-shadow: 0 0 10px black;
+        }
+        >div>div {
+            box-shadow: 0 0 10px black;
+        }
+    }
+}
+
+span {
+	display: block;
+}
+
+.content:hover {
+	background-color: #CC8100;
+	box-shadow: 0 0 10px #F6FFA4;
+}
+
+div {
+    box-shadow: 0 0 2px black;
+    transition: all 180s linear;
+}
+div.size_19:hover {
+//transform: rotate(-360deg);
+}
+
+
+
+.sizeLoop (@n, @i: 1) when (@i <= @n) {
+    .circle_size_@{i} {
+        @baseRadius: 20px;
+        @eSize: @i*@baseRadius;
+        width: @eSize;
+        height: @eSize;
+        margin: -@eSize/2 0 0 -@eSize/2;
+        
+        //@icolor: @i;
+        //if (@i >= 17) {@icolor: @i-10;}
+        
+        @colorIntencity: 10;
+        .icolor (@ii) when (@ii < 7) {
+            background-color: rgb(@colorIntencity*@ii, @colorIntencity*@ii, @colorIntencity*@ii);
+        }
+        .icolor (@ii) when (@ii >= 17) {
+            background-color: rgb(@colorIntencity*(@ii - 10), @colorIntencity*(@ii - 10), @colorIntencity*(@ii - 10));
+        }
+        //.icolor(@i);
+        background-color: #666; //rgb(10*@i,0,0);
+
+        //&.circle {
+            border-radius: @eSize;
+        //}
+        
+        &.W { margin: -@eSize/2 0 0 -@eSize/2-@n*@baseRadius; }
+        &.E { margin: -@eSize/2 0 0 -@eSize/2+@n*@baseRadius; }
+        &.N { margin: -@eSize/2-@n*@baseRadius 0 0 -@eSize/2; }
+        &.S { margin: -@eSize/2+@n*@baseRadius 0 0 -@eSize/2; }
+        
+        @k1: 0.767;
+        &.NW { margin: -@eSize/2-@n*@baseRadius*@k1 0 0 -@eSize/2-@n*@baseRadius*@k1; }
+        &.NE { margin: -@eSize/2-@n*@baseRadius*@k1 0 0 -@eSize/2+@n*@baseRadius*@k1; }
+        &.SW { margin: -@eSize/2+@n*@baseRadius*@k1 0 0 -@eSize/2-@n*@baseRadius*@k1; }
+        &.SE { margin: -@eSize/2+@n*@baseRadius*@k1 0 0 -@eSize/2+@n*@baseRadius*@k1; }
+        
+        @s1: 1.133;
+        @c1: 0.568;
+        &.NNE { margin: -@eSize/2-@n*@baseRadius*@s1 0 0 -@eSize/2-@n*@baseRadius*@c1; };
+        &.NEE { margin: -@eSize/2-@n*@baseRadius*@s1 0 0 -@eSize/2+@n*@baseRadius*@c1; };
+        &.SEE { margin: -@eSize/2-@n*@baseRadius*@c1 0 0 -@eSize/2+@n*@baseRadius*@s1; };
+        &.SSE { margin: -@eSize/2+@n*@baseRadius*@c1 0 0 -@eSize/2+@n*@baseRadius*@s1; };
+        &.SSW { margin: -@eSize/2+@n*@baseRadius*@s1 0 0 -@eSize/2+@n*@baseRadius*@c1; };
+        &.SWW { margin: -@eSize/2+@n*@baseRadius*@s1 0 0 -@eSize/2-@n*@baseRadius*@c1; };
+        &.NWW { margin: -@eSize/2+@n*@baseRadius*@c1 0 0 -@eSize/2-@n*@baseRadius*@s1; };
+        &.NNW { margin: -@eSize/2-@n*@baseRadius*@c1 0 0 -@eSize/2-@n*@baseRadius*@s1; };
+        
+        @k2: 0.413;
+        &.NEC { margin: -@eSize/2-@n*@baseRadius*@k2 0 0 -@eSize/2+@n*@baseRadius*@k2; }
+        &.SEC { margin: -@eSize/2+@n*@baseRadius*@k2 0 0 -@eSize/2+@n*@baseRadius*@k2; }
+        &.SWC { margin: -@eSize/2+@n*@baseRadius*@k2 0 0 -@eSize/2-@n*@baseRadius*@k2; }
+        &.NWC { margin: -@eSize/2-@n*@baseRadius*@k2 0 0 -@eSize/2-@n*@baseRadius*@k2; }
+    }
+    .sizeLoop(@n, @i + 1);
+}
+
+.sizeLoop(6,1);
+.sizeLoop(19,17);
