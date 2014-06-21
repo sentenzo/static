@@ -43,18 +43,23 @@ span {
 	display: block;
 }
 
+.content {
+	//background: none repeat scroll 0 0 #666;
+	background: radial-gradient(circle at center, #c10 0%, #c10 25%, #CC8100 100%);
+	//transition: 3s;
+}
 .content:hover {
-	background-color: #CC8100;
-	box-shadow: 0 0 10px #333;
+	//background-color: #CC8100;
+	background: radial-gradient(circle at center, #c10 0%, #c10 25%, #ff0 100%);
+	box-shadow: 0 0 10px #000;
+	//transition: all 1s linear 5s;
 }
 
 div {
     box-shadow: 0 0 2px black;
-    transition: all 180s linear;
+    //transition: all 180s linear;
 }
-div.size_19:hover {
-//transform: rotate(-360deg);
-}
+
 
 
 
@@ -77,7 +82,7 @@ div.size_19:hover {
             background-color: rgb(@colorIntencity*(@ii - 10), @colorIntencity*(@ii - 10), @colorIntencity*(@ii - 10));
         }
         //.icolor(@i);
-        background-color: #666; //rgb(10*@i,0,0);
+        //background-color: #666; //rgb(10*@i,0,0);
 
         //&.circle {
             border-radius: @eSize;
